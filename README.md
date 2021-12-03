@@ -1,10 +1,10 @@
 # STFC (Ship to First Commit)
 Code for cleansing data for Ship to First Commit metric to be consumed by Tableau. The precise STFC definition is described later at this page.
 
-## More detailed description of the metrc and the code:
+## More detailed description of STFC and the code:
 This code is a part of Ship-To-First-Commit (STFC) metric. For the metric, the first promise date needs to be recognized for each sales line. (The first promise dates are the dates a company first promised to its customers when it will deliver the products.) As the data table has all the records if there is any change in lines, i.e. there could be multiple rows regarding to one sales number, we need data cleansing code to get the line with the first promise date.
 
-## Precise definition
+## Formulaic definition of STFC
 <a href="https://www.codecogs.com/eqnedit.php?latex=STFC=\frac{STFC\_Hit}{STFC\_Hit&plus;STFC\_Miss}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?STFC=\frac{STFC\_Hit}{STFC\_Hit&plus;STFC\_Miss}" title="STFC=\frac{STFC\_Hit}{STFC\_Hit+STFC\_Miss}" /></a>
 
 where
@@ -16,7 +16,7 @@ where
   - Split orders keeps the original 1st PD of its parents
 - Report date = 1st PD + 7 days
 
-## What needs to be improved for STFC
+## What needs to be improved in the code for STFC
 This code is not the final version. The final version cannot be released becasue it has been done as a part of a company project. For the accurate metric reporting, the following logic needs to be applied to the code: while tracing back to each sales lines, if there is any customer requester date (CRD) change, then the first promise date tracing needs be stopped. It is because the reasonable first commit is the first promise date after the CRD change. The current code, however, doesn't stop tracing back even if there is a CRD change.
 
 ## Other applications of the code
