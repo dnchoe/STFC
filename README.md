@@ -9,12 +9,12 @@ This code is a part of Ship-To-First-Commit (STFC) metric. For the metric, the f
 
 where
 - STFC Hit: Shipped within $\pm$ 7 days of 1st Promise Date (inclusive)
-  - STFC Miss:
-    - Shipped: ship date outside
-    - Backlog: Current date > 1st PD + 7 days
-  - 1st PD is the first commit or 1st PD after a customer changes CRD
+- STFC Miss:
+  - Shipped: ship date outside
+  - Backlog: Current date > 1st PD + 7 days
+- 1st PD is the first commit or 1st PD after a customer changes CRD
   - Split orders keeps the original 1st PD of its parents
-  - Report date = 1st PD + 7 days
+- Report date = 1st PD + 7 days
 
 ## What needs to be improved for STFC
 This code is not the final version. The final version cannot be released becasue it has been done as a part of a company project. For the accurate metric reporting, the following logic needs to be applied to the code: while tracing back to each sales lines, if there is any customer requester date (CRD) change, then the first promise date tracing needs be stopped. It is because the reasonable first commit is the first promise date after the CRD change. The current code, however, doesn't stop tracing back even if there is a CRD change.
